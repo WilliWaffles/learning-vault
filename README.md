@@ -11,6 +11,7 @@ It helps users keep proof of what they have learned and revisit it whenever they
 # MVP v0.1
 
 Language: Python
+
 Topics:
 - Functions
 - Conditionals
