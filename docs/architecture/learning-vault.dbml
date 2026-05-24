@@ -1,0 +1,81 @@
+Table languages {
+  id integer [pk]
+  name text [not null, unique]
+  description text [not null]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table categories {
+  id integer [pk]
+  language_id integer [not null]
+  name text [not null]
+  description text [not null]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table topics {
+  id integer [pk]
+  category_id integer [not null]
+  name text [not null]
+  description text [not null]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table theory_sections {
+  id integer [pk]
+  topic_id integer [not null]
+  title text [not null]
+  content text [not null]
+  display_order integer [not null]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table questions {
+  id integer [pk]
+  topic_id integer [not null]
+  prompt text [not null]
+  expected_answer text [not null]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table question_attempts {
+  id integer [pk]
+  question_id integer [not null]
+  user_answer text [not null]
+  created_at datetime [not null]
+}
+
+Table exercises {
+  id integer [pk]
+  topic_id integer [not null]
+  title text [not null]
+  description text [not null]
+  difficulty text [not null]
+  expected_input text
+  expected_output text
+  test_script text [not null]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table exercise_attempts {
+  id integer [pk]
+  exercise_id integer [not null]
+  status text [not null]
+  notes text
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Ref: categories.language_id > languages.id
+Ref: topics.category_id > categories.id
+Ref: theory_sections.topic_id > topics.id
+Ref: questions.topic_id > topics.id
+Ref: question_attempts.question_id > questions.id
+Ref: exercises.topic_id > topics.id
+Ref: exercise_attempts.exercise_id > exercises.id

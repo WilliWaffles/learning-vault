@@ -1,5 +1,8 @@
 # Model for MVP v0.1
 
+The visual ERD is defined in `learning-vault.dbml`.
+
+```text
 Language
  └── Category
       └── Topic
@@ -8,6 +11,7 @@ Language
            │    └── Question Attempts
            └── Exercises
                 └── Exercise Attempts
+```
 
 # Language
 
